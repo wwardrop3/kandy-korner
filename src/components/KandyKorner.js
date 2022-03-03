@@ -1,34 +1,37 @@
-import { EmployeeList } from "./Employees/EmployeeList"
-import { LocationList } from "./Locations/LocationList"
-import { ProductList } from "./Products/ProductList"
-import { ProductTypeList } from "./ProductTypes/ProductTypeList"
-import { PurchaseList } from "./Purchases/PurchaseList"
+import React from "react"
+import { Route, Redirect } from "react-router-dom"
+import { ApplicationViews } from "./ApplicationViews"
+import { NavBar } from "./Nav/NavBar"
+import { Login } from "./auth/Login"
+import { Register } from "./auth/Register"
+
 
 export const KandyKorner = () => {
     return(
-        <>
-    <article>
-        <section>
-            <h2>Locations</h2>
-            <LocationList />
-
-            <h2>Products</h2>
-            <ProductList />
-
-            <h2>Product Types</h2>
-            <ProductTypeList />
-
-            <h2>Purchases</h2>
-            <PurchaseList />
-
-            <h2>Employees</h2>
-            <EmployeeList />
-
-
-
-        </section>
-    </article>
-    </>
+    <>
+    <Route
+      render={() => {
+        if (localStorage.getItem("kandy_customer")) { //if the customer exists, return the application views as normal
+          return (
+            <>
+              <NavBar />
+              <ApplicationViews />
+            </>
+          )}
+         else { //if the customer does not exist, add login to url just like a route
+        return ( <Redirect to="/login"/> )}
+          }}
+    />
+    
+    <Route path="/login">
+        <Login/>
+    </Route>
+    <Route path="/register">
+        <Register/>
+    </Route>
+       
+   
+  </>
     )
 }
 

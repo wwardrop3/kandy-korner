@@ -27,6 +27,7 @@ export const LocationList = () => {
 
     return(
         <>
+        <h2>Locations</h2>
         <div>{locationsList}</div>
         </>
     )       
