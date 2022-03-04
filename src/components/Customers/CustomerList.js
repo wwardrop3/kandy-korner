@@ -15,7 +15,7 @@ export const CustomerList =() =>{
                     setCustomer(response)
                 }
             )
-        }
+        },[]
     )
 
     useEffect(
@@ -25,7 +25,7 @@ export const CustomerList =() =>{
             } else {
                 createCustomerCounterString(`There are ${customers.length} customers`)
             }
-        }
+        },[customers]
     )
 
     return (
@@ -33,13 +33,11 @@ export const CustomerList =() =>{
         <h2>Customers</h2>
         {customerCounterString}
         {customers.map(customerObject => {
-            return <p key="`customer--${customerObject.id}`">{customerObject.name}</p>
+            return <p key ={`customer--${customerObject.id}`}>{customerObject.name}</p>
         })
-        }
+    }
         </>
     )
-
-
 
 }
 

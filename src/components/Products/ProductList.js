@@ -27,6 +27,7 @@ export const ProductList = () => {
 
     return(
         <>
+        <h2>Products</h2>
         <div>{productList}</div>
         </>
     )       

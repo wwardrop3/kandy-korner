@@ -3,6 +3,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { CustomerList } from "./Customers/CustomerList";
+import { HireEmployeeForm } from "./Employees/EmployeeHireForm";
 import { EmployeeList } from "./Employees/EmployeeList";
 import { LocationList } from "./Locations/LocationList";
 import { ProductList } from "./Products/ProductList";
@@ -12,7 +13,7 @@ import { ProductList } from "./Products/ProductList";
 export const ApplicationViews = () => {
     return (
         <>
-        <Route path={"/employees"}>
+        <Route exact path={"/employees"}>
             <EmployeeList />
         </Route>
 
@@ -26,6 +27,10 @@ export const ApplicationViews = () => {
 
         <Route path={"/products"}>
             <ProductList />
+        </Route>
+
+        <Route path={"/employees/create"}>
+            <HireEmployeeForm />
         </Route>
         
         </>
